@@ -20,7 +20,7 @@ class TimerView extends StatelessWidget {
               padding: EdgeInsets.symmetric(vertical: 100.0),
               child: Center(child: TimerText()),
             ),
-            Center(child: TimerActions()),
+            TimerActions(),
           ],
         ),
       ],
