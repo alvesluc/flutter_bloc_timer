@@ -2,7 +2,8 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter_timer/timer/ticker.dart';
+
+import '../ticker.dart';
 
 part 'timer_event.dart';
 part 'timer_state.dart';
@@ -23,6 +24,7 @@ class TimerBloc extends Bloc<TimerEvent, TimerState> {
     on<TimerTicked>(_onTicked);
   }
 
+  @override
   Future<void> close() {
     _tickerSubscription?.cancel();
     return super.close();
@@ -44,7 +46,7 @@ class TimerBloc extends Bloc<TimerEvent, TimerState> {
   }
 
   void _onResumed(TimerResumed event, Emitter<TimerState> emit) {
-    if (state is TimerPaused) {
+    if (state is TimerRunPause) {
       _tickerSubscription?.resume();
       emit(TimerRunInProgress(state.duration));
     }
