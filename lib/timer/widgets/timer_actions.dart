@@ -16,7 +16,7 @@ class TimerActions extends StatelessWidget {
           children: [
             if (state is TimerInitial) ...[
               FloatingActionButton(
-                child: Icon(Icons.play_arrow),
+                child: Icon(Icons.play_arrow, color: Colors.white),
                 onPressed: () => context
                     .read<TimerBloc>()
                     .add(TimerStarted(duration: state.duration)),
@@ -24,27 +24,27 @@ class TimerActions extends StatelessWidget {
             ],
             if (state is TimerRunInProgress) ...[
               FloatingActionButton(
-                child: Icon(Icons.pause),
+                child: Icon(Icons.pause, color: Colors.white),
                 onPressed: () => context.read<TimerBloc>().add(TimerPaused()),
               ),
               FloatingActionButton(
-                child: Icon(Icons.replay),
+                child: Icon(Icons.replay, color: Colors.white),
                 onPressed: () => context.read<TimerBloc>().add(TimerReset()),
               ),
             ],
             if (state is TimerRunPause) ...[
               FloatingActionButton(
-                child: Icon(Icons.play_arrow),
+                child: Icon(Icons.play_arrow, color: Colors.white),
                 onPressed: () => context.read<TimerBloc>().add(TimerResumed()),
               ),
               FloatingActionButton(
-                child: Icon(Icons.replay),
+                child: Icon(Icons.replay, color: Colors.white),
                 onPressed: () => context.read<TimerBloc>().add(TimerReset()),
               ),
             ],
             if (state is TimerRunComplete) ...[
               FloatingActionButton(
-                child: Icon(Icons.replay),
+                child: Icon(Icons.replay, color: Colors.white),
                 onPressed: () => context.read<TimerBloc>().add(TimerReset()),
               )
             ]
